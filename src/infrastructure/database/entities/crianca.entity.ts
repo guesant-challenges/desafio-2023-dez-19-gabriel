@@ -1,10 +1,16 @@
 import { CriancaModel } from 'src/domain';
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { EnderecoEntity } from './endereco.entity';
 
 @Entity('crianca')
 export class CriancaEntity implements CriancaModel {
-  @PrimaryColumn({ name: 'id_cri', type: 'int' })
+  @PrimaryGeneratedColumn({ name: 'id_cri', type: 'int' })
   id: number;
 
   @Column({ name: 'nome_cri', type: 'text' })

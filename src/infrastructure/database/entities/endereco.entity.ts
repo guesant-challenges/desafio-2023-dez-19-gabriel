@@ -1,9 +1,9 @@
 import { EnderecoModel } from 'src/domain';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('endereco')
 export class EnderecoEntity implements EnderecoModel {
-  @PrimaryColumn({ name: 'id_end', type: 'int' })
+  @PrimaryGeneratedColumn({ name: 'id_end', type: 'int' })
   id: number;
 
   //

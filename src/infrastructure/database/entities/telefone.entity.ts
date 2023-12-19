@@ -1,11 +1,17 @@
 import { CriancaModel, TelefoneModel, TipoResponsavelModel } from 'src/domain';
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { CriancaEntity } from './crianca.entity';
 import { TipoResponsavelEntity } from './tipo-responsavel.entity';
 
 @Entity('Telefone')
 export class TelefoneEntity implements TelefoneModel {
-  @PrimaryColumn({ name: 'id_tel', type: 'int' })
+  @PrimaryGeneratedColumn({ name: 'id_tel', type: 'int' })
   id: number;
 
   //
