@@ -24,7 +24,8 @@
     "db:rollback": "npm run typeorm:ds-migration -- migration:revert",
     "db:create": "typeorm migration:create src/infrastructure/database/migrations/Migration",
     "seed:migrate": "npm run typeorm:ds-seed -- migration:run",
-    "seed:rollback": "npm run typeorm:ds-seed -- migration:revert"
+    "seed:rollback": "npm run typeorm:ds-seed -- migration:revert",
+    "seed:create": "typeorm migration:create src/infrastructure/database/seeds/Seed"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
