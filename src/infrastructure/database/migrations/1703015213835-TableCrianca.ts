@@ -25,6 +25,7 @@ export class TableCrianca1703015213835 implements MigrationInterface {
             name: 'cpf_cri',
             type: 'text',
             isNullable: false,
+            isUnique: true,
           },
 
           {
