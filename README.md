@@ -11,6 +11,8 @@ Participante: Gabriel Rodrigues Antunes.
 | `app-sistema-node` | `3000`        | API HTTP REST.           | [`http://localhost:3000`](http://localhost:3000) | `HTTP`     | `node:20` (baseado no debian); `nestjs@10`; |
 | `app-sistema-db`   | `5432`        | Banco de dados postgres. | [`localhost:5432`](localhost:5432)               | `postgres` | `postgres:16-alpine` (baseado no alpine);   |
 
+DOCUMENTAÇÃO DO SWAGGER DISPONÍVEL EM <http://localhost:3000/api>.
+
 ## Desenvolvimento
 
 ### Obter o código do repositório.
@@ -49,7 +51,7 @@ Assim como em qualquer sistema, é necessário configurar os "segredos" ou as co
 ##### `.env`
 
 | Nome              | Descrição                                                                                | Padrão            |
-| ----------------- |------------------------------------------------------------------------------------------| ----------------- |
+| ----------------- | ---------------------------------------------------------------------------------------- | ----------------- |
 | `PORT`            | Número inteiro que indica o número da porta que o servidor HTTP escutará as requisições. | `3000`            |
 | DATABASE_HOST     | Endereço do banco de dados postgres.                                                     | `app-sistema-db`  |
 | DATABASE_PORT     | Número da porta de acesso ao banco de dados postgres.                                    | `5432`            |
@@ -112,6 +114,35 @@ Por questões de conveniência, o script para inciar os seviços foi acoplado ao
 ```bash
 make compose-shell;
 ```
+
+#### API: baixar as dependências
+
+Por padrão, o projeto vem sem as dependências instaladas. Para o comportamento correto desejado, faça dentro do shell da aplicação node:
+
+```bash
+npm install;
+```
+
+#### API: rodar as migrations e seeds
+
+Por padrão, o banco de dados vem limpo. Para isso, existem as migrations (que criam as estruturas de dados) e as seeds (que preenchem as tabelas). Para o comportamento correto desejado, faça dentro do shell da aplicação node:
+
+```bash
+npm run db:migrate;
+npm run seed:migrate;
+```
+
+#### API: iniciar servidor
+
+Para iniciar o servidor da API, faça dentro do shell da aplicação node:
+
+```bash
+npm run start:dev;
+```
+
+Assim, o serviço estará disponível em: <http://localhost:3000>.
+
+DOCUMENTAÇÃO DO SWAGGER DISPONÍVEL EM <http://localhost:3000/api>.
 
 ---
 
