@@ -6,10 +6,10 @@ Participante: Gabriel Rodrigues Antunes.
 
 ## Serviços
 
-| Nome do container  | Porta interna | Porta externa mapeada ao S.O.                    | Protocolo  | Plataforma base                             | Descrição                |
-| ------------------ | ------------- | ------------------------------------------------ | ---------- | ------------------------------------------- | ------------------------ |
-| `app-sistema-node` | `3000`        | [`http://localhost:3000`](http://localhost:3000) | `HTTP`     | `node:20` (baseado no debian); `nestjs@10`; | API HTTP REST.           |
-| `app-sistema-db`   | `5432`        | [`localhost:5432`](localhost:5432)               | `postgres` | `postgres:16-alpine` (baseado no alpine);   | Banco de dados postgres. |
+| Nome do container  | Porta interna | Descrição                | Porta externa mapeada ao S.O.                    | Protocolo  | Plataforma base                             |
+|--------------------|---------------|--------------------------|--------------------------------------------------|------------|---------------------------------------------|
+| `app-sistema-node` | `3000`        | API HTTP REST.           | [`http://localhost:3000`](http://localhost:3000) | `HTTP`     | `node:20` (baseado no debian); `nestjs@10`; |
+| `app-sistema-db`   | `5432`        | Banco de dados postgres. | [`localhost:5432`](localhost:5432)               | `postgres` | `postgres:16-alpine` (baseado no alpine);   |
 
 ## Desenvolvimento
 
