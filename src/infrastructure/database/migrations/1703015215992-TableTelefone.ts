@@ -1,14 +1,14 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class TableEndereco1703013871017 implements MigrationInterface {
+export class TableTelefone1703015215992 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'endereco',
+        name: 'telefone',
 
         columns: [
           {
-            name: 'id_end',
+            name: 'id_tel',
             type: 'int',
             isGenerated: true,
             generationStrategy: 'increment',
@@ -16,45 +16,34 @@ export class TableEndereco1703013871017 implements MigrationInterface {
           },
 
           {
-            name: 'cep_end',
+            name: 'numero_tel',
             type: 'text',
             isNullable: false,
           },
 
           {
-            name: 'logradouro_end',
-            type: 'text',
-            isNullable: false,
-          },
-
-          {
-            name: 'numero_end',
+            name: 'id_cri_fk',
             type: 'int',
             isNullable: false,
           },
 
           {
-            name: 'bairro_end',
-            type: 'text',
-            isNullable: false,
-          },
-
-          {
-            name: 'complemento_end',
-            type: 'text',
+            name: 'id_tr_fk',
+            type: 'int',
             isNullable: true,
           },
+        ],
 
+        foreignKeys: [
           {
-            name: 'municipio_end',
-            type: 'text',
-            isNullable: false,
+            columnNames: ['id_cri_fk'],
+            referencedColumnNames: ['id_cri'],
+            referencedTableName: 'crianca',
           },
-
           {
-            name: 'uf_end',
-            type: 'text',
-            isNullable: false,
+            columnNames: ['id_tr_fk'],
+            referencedColumnNames: ['id_tr'],
+            referencedTableName: 'tipo_responsavel',
           },
         ],
       }),
@@ -62,6 +51,6 @@ export class TableEndereco1703013871017 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('endereco', true, true);
+    await queryRunner.dropTable('telefone', true, true);
   }
 }

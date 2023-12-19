@@ -1,14 +1,14 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class TableEndereco1703013871017 implements MigrationInterface {
+export class TableCrianca1703015213835 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'endereco',
+        name: 'crianca',
 
         columns: [
           {
-            name: 'id_end',
+            name: 'id_cri',
             type: 'int',
             isGenerated: true,
             generationStrategy: 'increment',
@@ -16,45 +16,53 @@ export class TableEndereco1703013871017 implements MigrationInterface {
           },
 
           {
-            name: 'cep_end',
+            name: 'nome_cri',
             type: 'text',
             isNullable: false,
           },
 
           {
-            name: 'logradouro_end',
+            name: 'cpf_cri',
             type: 'text',
             isNullable: false,
           },
 
           {
-            name: 'numero_end',
-            type: 'int',
-            isNullable: false,
-          },
-
-          {
-            name: 'bairro_end',
-            type: 'text',
-            isNullable: false,
-          },
-
-          {
-            name: 'complemento_end',
+            name: 'sexo_cri',
             type: 'text',
             isNullable: true,
           },
 
           {
-            name: 'municipio_end',
+            name: 'data_nascimento_cri',
+            type: 'date',
+            isNullable: true,
+          },
+
+          {
+            name: 'nome_responsavel_cri',
             type: 'text',
             isNullable: false,
           },
 
           {
-            name: 'uf_end',
+            name: 'email_cri',
             type: 'text',
-            isNullable: false,
+            isNullable: true,
+          },
+
+          {
+            name: 'id_end_fk',
+            type: 'int',
+            isNullable: true,
+          },
+        ],
+
+        foreignKeys: [
+          {
+            columnNames: ['id_end_fk'],
+            referencedColumnNames: ['id_end'],
+            referencedTableName: 'endereco',
           },
         ],
       }),
@@ -62,6 +70,6 @@ export class TableEndereco1703013871017 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('endereco', true, true);
+    await queryRunner.dropTable('crianca', true, true);
   }
 }

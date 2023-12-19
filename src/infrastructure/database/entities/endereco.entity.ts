@@ -21,7 +21,7 @@ export class EnderecoEntity implements EnderecoModel {
   bairro: string;
 
   @Column({ name: 'complemento_end', type: 'text' })
-  complemento: string;
+  complemento: string | null;
 
   @Column({ name: 'municipio_end', type: 'text' })
   municipio: string;
