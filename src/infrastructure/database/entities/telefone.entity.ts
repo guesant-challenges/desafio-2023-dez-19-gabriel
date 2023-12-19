@@ -16,10 +16,10 @@ export class TelefoneEntity implements TelefoneModel {
   //
 
   @ManyToOne(() => CriancaEntity)
-  @JoinColumn({ name: 'id_cri_fk', referencedColumnName: 'id_cri' })
+  @JoinColumn({ name: 'id_cri_fk', referencedColumnName: 'id' })
   crianca: CriancaModel;
 
   @ManyToOne(() => TipoResponsavelEntity)
-  @JoinColumn({ name: 'id_tr_fk', referencedColumnName: 'id_tr' })
+  @JoinColumn({ name: 'id_tr_fk', referencedColumnName: 'id' })
   tipoResponsavel: TipoResponsavelModel;
 }

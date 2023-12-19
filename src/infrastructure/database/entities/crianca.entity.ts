@@ -23,9 +23,9 @@ export class CriancaEntity implements CriancaModel {
   nomeResponsavel: string;
 
   @Column({ name: 'email_cri', type: 'text' })
-  email: string|null;
+  email: string | null;
 
   @ManyToOne(() => EnderecoEntity)
-  @JoinColumn({ name: 'id_end_fk', referencedColumnName: 'id_end' })
+  @JoinColumn({ name: 'id_end_fk', referencedColumnName: 'id' })
   endereco: EnderecoEntity;
 }
