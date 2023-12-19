@@ -12,6 +12,7 @@ import { TipoResponsavelEntity } from '../../../infrastructure/database/entities
 import { EnderecoService } from '../endereco/endereco.service';
 import { TipoResponsavelService } from '../tipo-responsavel/tipo-responsavel.service';
 import { CriancaCreateDto } from './dtos/CriancaCreateDto';
+import { CriancaCreateDtoTelefone } from './dtos/CriancaCreateDtoTelefone';
 import { CriancaFindByIdResponseDto } from './dtos/CriancaFindByIdResponseDto';
 import { CriancaUpdateDto } from './dtos/CriancaUpdateDto';
 
@@ -97,6 +98,10 @@ export class CriancaService {
 
     await criancaRepository.save(crianca);
 
+    //
+
+    await this.criancaSetTelefones(crianca.id, criancaCreateDto.telefones);
+
     return {
       id: crianca.id,
     };
@@ -118,6 +123,8 @@ export class CriancaService {
   ): Promise<CriancaFindByIdResponseDto> {
     const criancaRepository = this.databaseContextApp.criancaRepository;
 
+    const telefoneRepository = this.databaseContextApp.telefoneRepository;
+
     const crianca = await criancaRepository
       .createQueryBuilder('crianca')
       .leftJoin('crianca.endereco', 'endereco')
@@ -131,6 +138,16 @@ export class CriancaService {
         'O ID informado não está relacionado a nenhuma criança do sistema.',
       );
     }
+
+    // const telefones = await telefoneRepository
+    //   .createQueryBuilder('telefone')
+    //   .innerJoin('telefone.crianca', 'crianca')
+    //   .innerJoin('telefone.tipoResponsavel', 'tipoResponsavel')
+    //   .select(['telefone', 'tipoResponsavel.id', 'tipoResponsavel.nome'])
+    //   // .where('crianca.id = criancaId', { criancaId: crianca.id })
+    //   .getMany();
+
+    // crianca.telefones = telefones;
 
     return crianca;
   }
@@ -208,8 +225,42 @@ export class CriancaService {
 
     await criancaRepository.save(criancaAtualizada);
 
+    await this.criancaSetTelefones(
+      criancaAtualizada.id,
+      criancaUpdateDto.telefones,
+    );
+
     return {
       id: criancaAtualizada.id,
     };
+  }
+
+  async criancaSetTelefones(
+    criancaId: number,
+    criancaCreateTelefoneDtoList: CriancaCreateDtoTelefone[],
+  ) {
+    // const telefoneRepository = this.databaseContextApp.telefoneRepository;
+    // const telefonesAtuais = await telefoneRepository
+    //   .createQueryBuilder('telefone')
+    //   .select('telefone.id')
+    //   .innerJoin('telefone.crianca', 'crianca')
+    //   .where('crianca.id = criancaId', { criancaId })
+    //   .getMany();
+    // await telefoneRepository
+    //   .createQueryBuilder()
+    //   .delete()
+    //   .whereInIds(telefonesAtuais.map((telefone) => telefone.id))
+    //   .execute();
+    // for (const criancaCreateTelefoneDtoItem of criancaCreateTelefoneDtoList) {
+    //   await telefoneRepository.save(<TelefoneEntity>{
+    //     numero: criancaCreateTelefoneDtoItem.numero,
+    //     crianca: {
+    //       id: criancaId,
+    //     },
+    //     tipoResponsavel: {
+    //       id: criancaCreateTelefoneDtoItem.tipoResponsavel.id,
+    //     },
+    //   });
+    // }
   }
 }

@@ -4,9 +4,11 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { EnderecoEntity } from './endereco.entity';
+import { TelefoneEntity } from './telefone.entity';
 import { TipoResponsavelEntity } from './tipo-responsavel.entity';
 
 @Entity('crianca')
@@ -39,4 +41,7 @@ export class CriancaEntity implements CriancaModel {
   @ManyToOne(() => TipoResponsavelEntity)
   @JoinColumn({ name: 'id_tr_fk', referencedColumnName: 'id' })
   tipoResponsavel: TipoResponsavelEntity;
+
+  @OneToMany(() => TelefoneEntity, (telefone) => telefone.crianca)
+  telefones: TelefoneEntity[];
 }

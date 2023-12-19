@@ -1,8 +1,9 @@
 import { ApiProperty, PickType } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { ValidateNested } from 'class-validator';
+import { IsArray, ValidateNested } from 'class-validator';
 import { EnderecoCreateDto } from '../../endereco/dtos/EnderecoCreateDto';
 import { TipoResponsavelTargetDto } from '../../tipo-responsavel/dtos/TipoResponsavelTargetDto';
+import { CriancaCreateDtoTelefone } from './CriancaCreateDtoTelefone';
 import { CriancaFindByIdResponseDto } from './CriancaFindByIdResponseDto';
 
 export class CriancaCreateDto extends PickType(CriancaFindByIdResponseDto, [
@@ -30,4 +31,14 @@ export class CriancaCreateDto extends PickType(CriancaFindByIdResponseDto, [
   @Type(() => TipoResponsavelTargetDto)
   @ValidateNested()
   tipoResponsavel: TipoResponsavelTargetDto;
+
+  @ApiProperty({
+    type: [CriancaCreateDtoTelefone],
+    required: true,
+    description: 'Telefones de contato da criança.',
+  })
+  @IsArray()
+  @Type(() => CriancaCreateDtoTelefone)
+  @ValidateNested()
+  telefones: CriancaCreateDtoTelefone[];
 }

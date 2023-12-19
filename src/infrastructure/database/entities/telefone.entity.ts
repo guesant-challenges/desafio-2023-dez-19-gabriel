@@ -1,4 +1,4 @@
-import { CriancaModel, TelefoneModel, TipoResponsavelModel } from 'src/domain';
+import { TelefoneModel, TipoResponsavelModel } from 'src/domain';
 import {
   Column,
   Entity,
@@ -9,7 +9,7 @@ import {
 import { CriancaEntity } from './crianca.entity';
 import { TipoResponsavelEntity } from './tipo-responsavel.entity';
 
-@Entity('Telefone')
+@Entity('telefone')
 export class TelefoneEntity implements TelefoneModel {
   @PrimaryGeneratedColumn({ name: 'id_tel', type: 'int' })
   id: number;
@@ -23,7 +23,7 @@ export class TelefoneEntity implements TelefoneModel {
 
   @ManyToOne(() => CriancaEntity)
   @JoinColumn({ name: 'id_cri_fk', referencedColumnName: 'id' })
-  crianca: CriancaModel;
+  crianca: CriancaEntity;
 
   @ManyToOne(() => TipoResponsavelEntity)
   @JoinColumn({ name: 'id_tr_fk', referencedColumnName: 'id' })
