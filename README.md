@@ -7,7 +7,7 @@ Participante: Gabriel Rodrigues Antunes.
 ## Serviços
 
 | Nome do container  | Porta interna | Descrição                | Porta externa mapeada ao S.O.                    | Protocolo  | Plataforma base                             |
-|--------------------|---------------|--------------------------|--------------------------------------------------|------------|---------------------------------------------|
+| ------------------ | ------------- | ------------------------ | ------------------------------------------------ | ---------- | ------------------------------------------- |
 | `app-sistema-node` | `3000`        | API HTTP REST.           | [`http://localhost:3000`](http://localhost:3000) | `HTTP`     | `node:20` (baseado no debian); `nestjs@10`; |
 | `app-sistema-db`   | `5432`        | Banco de dados postgres. | [`localhost:5432`](localhost:5432)               | `postgres` | `postgres:16-alpine` (baseado no alpine);   |
 
@@ -48,9 +48,14 @@ Assim como em qualquer sistema, é necessário configurar os "segredos" ou as co
 
 ##### `.env`
 
-| Nome   | Descrição                                                                                | Padrão |
-| ------ | ---------------------------------------------------------------------------------------- | ------ |
-| `PORT` | Número inteiro que indica o número da porta que o servidor HTTP escutará as requisições. | `3000` |
+| Nome              | Descrição                                                                                | Padrão            |
+| ----------------- |------------------------------------------------------------------------------------------| ----------------- |
+| `PORT`            | Número inteiro que indica o número da porta que o servidor HTTP escutará as requisições. | `3000`            |
+| DATABASE_HOST     | Endereço do banco de dados postgres.                                                     | `app-sistema-db`  |
+| DATABASE_PORT     | Número da porta de acesso ao banco de dados postgres.                                    | `5432`            |
+| DATABASE_USERNAME | Nome do usuário do banco de dados postgres.                                              | `postgres`        |
+| DATABASE_PASSWORD | Senha do usuário do banco de dados postgres.                                             | `{uuid aleatório` |
+| DATABASE_NAME     | Nome do banco de dados postgres.                                                         | `postgres`        |
 
 ```env
 # .env

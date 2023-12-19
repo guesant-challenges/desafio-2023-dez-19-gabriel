@@ -1,12 +1,13 @@
 export interface EnderecoModel {
   id: number;
 
-  cep: string | null;
-  logradouro: string | null;
-  numero: number | null;
-  bairro: string | null;
-  complemento: string | null;
-  municipio: string | null;
+  cep: string;
+  logradouro: string;
+  numero: number;
+  bairro: string;
 
-  UF: string | null;
+  complemento: string | null;
+
+  municipio: string | null;
+  uf: string | null;
 }

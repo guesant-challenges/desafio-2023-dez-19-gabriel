@@ -3,11 +3,12 @@ import { EnderecoModel } from './endereco.model';
 export interface CriancaModel {
   id: number;
 
-  nome: string;
   cpf: string;
   sexo: string;
-  nome_responsavel: string;
+  nome: string;
   email: string;
+  dataNascimento: Date | null;
+  nomeResponsavel: string;
 
   endereco: EnderecoModel | null;
 }
