@@ -4,6 +4,8 @@ Este repositório contém a solução ao "Teste Prático de Desenvolvimento | Á
 
 Participante: Gabriel Rodrigues Antunes.
 
+Apesar de fornecer o script sql em [./script.sql](./script.sql), o sistema utiliza a estratégia de migrations e seeds do próprio typeorm.
+
 ## Serviços
 
 | Nome do container  | Porta interna | Descrição                | Porta externa mapeada ao S.O.                    | Protocolo  | Plataforma base                             |
@@ -13,7 +15,7 @@ Participante: Gabriel Rodrigues Antunes.
 
 DOCUMENTAÇÃO DO SWAGGER DISPONÍVEL EM <http://localhost:3000/api>.
 
-## Desenvolvimento
+## Desenvolvimento (passo a passo para subir a aplicação).
 
 ### Obter o código do repositório.
 
