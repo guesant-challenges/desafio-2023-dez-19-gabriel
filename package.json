@@ -22,7 +22,7 @@
     "typeorm:ds-seed": "typeorm-ts-node-commonjs -d src/infrastructure/database/data-sources/seed.data-source.ts",
     "db:migrate": "npm run typeorm:ds-migration -- migration:run",
     "db:rollback": "npm run typeorm:ds-migration -- migration:revert",
-    "db:create": "typeorm migration:create",
+    "db:create": "typeorm migration:create src/infrastructure/database/migrations/Migration",
     "seed:migrate": "npm run typeorm:ds-seed -- migration:run",
     "seed:rollback": "npm run typeorm:ds-seed -- migration:revert"
   },
