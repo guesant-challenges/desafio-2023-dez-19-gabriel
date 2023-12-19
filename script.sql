@@ -34,3 +34,10 @@ CREATE TABLE "telefone" (
   "id_tr_fk" int,
   FOREIGN KEY ("id_tr_fk") REFERENCES "tipo_responsavel" ("id_tr"),
 )
+INSERT INTO
+  "tipo_responsavel" ("nome_tr")
+VALUES
+  ('Mãe'),
+  ('Pai'),
+  ('Avós'),
+  ('Outros');
