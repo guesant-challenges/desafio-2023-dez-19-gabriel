@@ -17,13 +17,15 @@ CREATE TABLE "tipo_responsavel" (
 CREATE TABLE "crianca" (
   "id_cri" SERIAL NOT NULL PRIMARY KEY,
   "nome_cri" text NOT NULL,
-  "cpf_cri" text NOT NULL,
+  "cpf_cri" text NOT NULL UNIQUE,
   "sexo_cri" text,
   "data_nascimento_cri" date,
   "nome_responsavel_cri" text NOT NULL,
   "email_cri" text,
   "id_end_fk" int,
   FOREIGN KEY ("id_end_fk") REFERENCES "endereco" ("id_end"),
+  "id_tr_fk" int,
+  FOREIGN KEY ("id_tr_fk") REFERENCES "tipo_responsavel" ("id_tr"),
 );
 
 CREATE TABLE "telefone" (
@@ -33,7 +35,8 @@ CREATE TABLE "telefone" (
   FOREIGN KEY ("id_cri_fk") REFERENCES "crianca" ("id_cri"),
   "id_tr_fk" int,
   FOREIGN KEY ("id_tr_fk") REFERENCES "tipo_responsavel" ("id_tr"),
-)
+);
+
 INSERT INTO
   "tipo_responsavel" ("nome_tr")
 VALUES

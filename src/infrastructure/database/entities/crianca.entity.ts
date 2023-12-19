@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { EnderecoEntity } from './endereco.entity';
+import { TipoResponsavelEntity } from './tipo-responsavel.entity';
 
 @Entity('crianca')
 export class CriancaEntity implements CriancaModel {
@@ -34,4 +35,8 @@ export class CriancaEntity implements CriancaModel {
   @ManyToOne(() => EnderecoEntity)
   @JoinColumn({ name: 'id_end_fk', referencedColumnName: 'id' })
   endereco: EnderecoEntity;
+
+  @ManyToOne(() => TipoResponsavelEntity)
+  @JoinColumn({ name: 'id_tr_fk', referencedColumnName: 'id' })
+  tipoResponsavel: TipoResponsavelEntity;
 }

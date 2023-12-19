@@ -57,6 +57,12 @@ export class TableCrianca1703015213835 implements MigrationInterface {
             type: 'int',
             isNullable: true,
           },
+
+          {
+            name: 'id_tr_fk',
+            type: 'int',
+            isNullable: true,
+          },
         ],
 
         foreignKeys: [
@@ -64,6 +70,11 @@ export class TableCrianca1703015213835 implements MigrationInterface {
             columnNames: ['id_end_fk'],
             referencedColumnNames: ['id_end'],
             referencedTableName: 'endereco',
+          },
+          {
+            columnNames: ['id_tr_fk'],
+            referencedColumnNames: ['id_tr'],
+            referencedTableName: 'tipo_responsavel',
           },
         ],
       }),

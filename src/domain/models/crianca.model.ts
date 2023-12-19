@@ -1,4 +1,5 @@
 import { EnderecoModel } from './endereco.model';
+import { TipoResponsavelModel } from './tipo-responsavel.model';
 
 export interface CriancaModel {
   id: number;
@@ -11,4 +12,5 @@ export interface CriancaModel {
   nomeResponsavel: string;
 
   endereco: EnderecoModel | null;
+  tipoResponsavel: TipoResponsavelModel;
 }
